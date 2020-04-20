@@ -40,6 +40,8 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-rails'
+  gem 'pry-byebug', platform: :mri
+  gem 'pry-rails'
 end
 
 group :development do
