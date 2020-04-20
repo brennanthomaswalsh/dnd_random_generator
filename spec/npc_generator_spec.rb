@@ -28,4 +28,28 @@ RSpec.describe NPCGenerator do
       expect(NPCGenerator::EAR_OPTIONS).to include(subject.ears)
     end
   end
+
+  context '#Mouth' do
+    it 'should return a randomized description of Mouth' do
+      expect(NPCGenerator::MOUTH_OPTIONS).to include(subject.mouth)
+    end
+  end
+
+  context '#nose' do
+    it 'should return a randomized description of nose' do
+      expect(NPCGenerator::NOSE_OPTIONS).to include(subject.nose)
+    end
+  end
+
+  context '#chin' do
+    it 'should return a randomized description of chin' do
+      expect(NPCGenerator::CHIN_OPTIONS).to include(subject.chin)
+    end
+  end
+
+  context '#hair' do
+    it 'should return a randomized description of hair' do
+      expect(NPCGenerator::HAIR_OPTIONS).to include(subject.hair)
+    end
+  end
 end
