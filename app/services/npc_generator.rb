@@ -6,9 +6,46 @@ class NPCGenerator
   CHIN_OPTIONS = %w[pronounced cleft dimple-on-the-chin rounded sharp-jawline square-jaw round-jaw underbite]
   HAIR_OPTIONS = %w[Thick Wispy Straight Wavy Curly Wiry Oily Lush Poofy Long-braids Tight-braids Very-long Greasy Unruly unusual-hairstyle outdated-hairstyle high-maintenance-hairstyle Short-cropped shaved None]
   MISC_OPTIONS = %w[High-cheekbones Tight-drawn-cheeks Chubby-cheeks unpleasant-pustule large-mole beauty-mark Freckles Terrible-scarring]
+  HEIGHT_OPTIONS = %w[Unusually-short Short-in-stature Average-height Slightly-above-average-height Well-above-average-height Unusually-tall]
+  BODY_OPTIONS = %w[Thin-and-delicate Of-average-build Well-muscled Slightly-overweight Grotesquely-obese Lean-and-lanky Lithe-and-lean Thin-and-wiry Sinewy-and-strong Flabby-and-weak Lumpy-or-bent Thin-and-flimsy Soft-and-chubby Thin-and-petite Pudgy Big-and-broad Stocky-and-strong Bony Wide-and-ponderous Covered-in-hair]
+  HAND_OPTIONS = %w[Powerful Delicate Rough Soft A-light-touch A-heavy-touch]
+  SCAR_OPTIONS = %w[jagged dark-purple angry-red long-thin None]
+  TATTOO_OPTIONS = %w[dagger arrow anchor skull pair-of-crossed-bones snake scorpion spider-web heart ring-of-thorns mermaid dragon none]
+  JEWELRY_TYPE_OPTIONS = %w[An-earring Two-earrings small-chain-about-the-neck large-chain-about-the-neck tight-choker-about-the-neck brooch ring Several-rings bracelet nose-ring medallion ornate-belt]
+  JEWELRY_STYLE_OPTIONS = %w[Steel Bronze Pewter Silver Gold Platinum Copper amethyst crystal diamond emerald jade obsidian opal pearl ruby sapphire topaz turquoise]
+  CLOTHES_OPTIONS = %w[Crisp-and-new Fashionable-and-hip bit-old-fashioned Of-the-highest-quality Faded-but-in-good-condition Faded-and-patched Torn-in-places/missing-buttons Tattered-and-worn]
+  WHEN_CALM_TRAIT_OPTIONS = %w[Compassionate Cheerful Reserved Outspoken Uninterested Gruff Eager Deceitful Foolish Strict Agreeable Mischeivious Angry Fearful Manipulative Devout Greedy Funny Dour Fun-Loving Lazy Driven Boastful Artistic Assertive Carefree Cautious Confident Thoughtful Loyal Sophisticated Weak-Willed]
+  WHEN_STRESSED_TRAIT_OPTIONS = %w[Withdrawn Murderous Obsessive Authoritarian Determined Brave Spiteful Belligerent Caustic Reckless Argumentative Gluttonous Overly Protective Angry Cowardly Meticulous Sarcastic Stubborn Destructive Practical Pushy Fanatical Secretive Scornful Courageous Impractical Calculating Industrious Manipulative Destructive Compulsive Intolerant]
+  STARTING_MOOD_OPTIONS = %w[Agreeable Carefree Curious Eager Friendly Happy Hopeful Upbeat Indifferent Bored Focused Suspicious Tired Withdrawn Disagreeable Agitated Angry Despondent Gloomy Nervous]
+
   def new_npc
     {
-      appearance: appearance
+      appearance: appearance,
+      accessories: accessories,
+      attitude: attitude,
+      beliefs: beliefs
+    }
+  end
+
+  def beliefs
+    @beliefs ||= {
+
+    }
+  end
+
+  def attitude
+    @attitude ||= {
+      when_calm_trait: when_calm_trait,
+      when_stressed_trait: when_stressed_trait,
+      starting_mood: starting_mood
+    }
+  end
+
+  def accessories
+    @accessories ||= {
+      tatto: tattoo,
+      jewelry: jewelry,
+      clothes: clothes
     }
   end
 
@@ -20,8 +57,55 @@ class NPCGenerator
       nose: nose,
       chin: chin,
       hair: hair,
-      misc: misc
+      misc: misc,
+      height: height,
+      body: body,
+      hands: hands,
+      scar: scar
     }
+  end
+
+  def starting_mood
+    STARTING_MOOD_OPTIONS.sample
+  end
+
+  def when_calm_trait
+    WHEN_CALM_TRAIT_OPTIONS.sample
+  end
+
+  def when_stressed_trait
+    WHEN_STRESSED_TRAIT_OPTIONS.sample
+  end
+
+  def clothes
+    CLOTHES_OPTIONS.sample
+  end
+
+  def jewelry
+    {
+      type: JEWELRY_TYPE_OPTIONS.sample,
+      style: JEWELRY_STYLE_OPTIONS.sample
+    }
+  end
+
+  def tattoo
+    TATTOO_OPTIONS.sample
+  end
+
+  def scar
+    SCAR_OPTIONS.sample
+  end
+
+  def hands
+    HAND_OPTIONS.sample
+  end
+
+  def body
+    BODY_OPTIONS.sample
+  end
+
+  def height
+    HEIGHT_OPTIONS.sample
   end
 
   def eyes
