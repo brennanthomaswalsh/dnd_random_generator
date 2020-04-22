@@ -12,7 +12,7 @@ class NPCGenerator
   SCAR_OPTIONS = %w[jagged dark-purple angry-red long-thin None]
   TATTOO_OPTIONS = %w[dagger arrow anchor skull pair-of-crossed-bones snake scorpion spider-web heart ring-of-thorns mermaid dragon none]
   JEWELRY_TYPE_OPTIONS = %w[An-earring Two-earrings small-chain-about-the-neck large-chain-about-the-neck tight-choker-about-the-neck brooch ring Several-rings bracelet nose-ring medallion ornate-belt]
-  JEWELRY_STYLE_OPTIONS = %w[Steel Bronze Pewter Silver Gold Platinum Copper amethyst crystal diamond emerald jade obsidian opal pearl ruby sapphire topaz turquoise]
+  JEWELRY_STYLE_OPTIONS = %w[Steel Bronze Pewter Silver Gold Platinum Copper Gemstone]
   CLOTHES_OPTIONS = %w[Crisp-and-new Fashionable-and-hip bit-old-fashioned Of-the-highest-quality Faded-but-in-good-condition Faded-and-patched Torn-in-places/missing-buttons Tattered-and-worn]
   WHEN_CALM_TRAIT_OPTIONS = %w[Compassionate Cheerful Reserved Outspoken Uninterested Gruff Eager Deceitful Foolish Strict Agreeable Mischeivious Angry Fearful Manipulative Devout Greedy Funny Dour Fun-Loving Lazy Driven Boastful Artistic Assertive Carefree Cautious Confident Thoughtful Loyal Sophisticated Weak-Willed]
   WHEN_STRESSED_TRAIT_OPTIONS = %w[Withdrawn Murderous Obsessive Authoritarian Determined Brave Spiteful Belligerent Caustic Reckless Argumentative Gluttonous Overly Protective Angry Cowardly Meticulous Sarcastic Stubborn Destructive Practical Pushy Fanatical Secretive Scornful Courageous Impractical Calculating Industrious Manipulative Destructive Compulsive Intolerant]
@@ -25,6 +25,7 @@ class NPCGenerator
   PROFESSION_OPTIONS = %w[farmers artists clergy soldiers fishers harlots miners merchants scholars herders sailors mages]
   RACE_OPTIONS = %w[dwarves elves gnomes goblins half-breeds halflings humans orcs reptilians]
   FLAW_OPTIONS = %w[Fidgets Drinks-too-much Eats-too-much Swears-often Has-poor-hygiene Can’t-resist-flirting Can’t-stop-staring Sweats-profusely-and-easily Is-a-habitual-liar Embellishes-the-truth Exaggerates-details Has-a-short-temper Is-melodramatic Gossips Chews-with-an-open-mouth Often-sniffs-audibly Believes-what-you-tell-him/her Is-skeptical-of-everything Paces Makes-poor-eye-contact]
+  GEMSTONE_OPTIONS = %w[amethyst crystal diamond emerald jade obsidian opal pearl ruby sapphire topaz turquoise]
 
   def new_npc
     {
@@ -120,8 +121,18 @@ class NPCGenerator
   def jewelry
     {
       type: JEWELRY_TYPE_OPTIONS.sample,
-      style: JEWELRY_STYLE_OPTIONS.sample
+      style: style
     }
+  end
+
+  def style
+    style = JEWELRY_STYLE_OPTIONS.sample
+    case style
+    when 'Gemstone'
+      GEMSTONE_OPTIONS.sample
+    else
+      style
+    end
   end
 
   def tattoo

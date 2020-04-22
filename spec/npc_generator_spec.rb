@@ -23,6 +23,20 @@ RSpec.describe NPCGenerator do
     end
   end
 
+  context '#beliefs' do
+    it 'should return faiths' do
+      expect(subject.beliefs[:faith]).not_to be_nil
+    end
+
+    it 'should return prejudices' do
+      expect(subject.beliefs[:prejudice]).not_to be_nil
+    end
+
+    it 'should return flaws' do
+      expect(subject.beliefs[:flaws]).not_to be_nil
+    end
+  end
+
   context '#appearance' do
     it 'should return a description of eyes' do
       expect(subject.appearance[:eyes]).not_to be_nil
@@ -135,6 +149,74 @@ RSpec.describe NPCGenerator do
   context '#faith' do
     it 'should return a randomized description of faith' do
       expect(NPCGenerator::FAITH_OPTIONS).to include(subject.faith)
+    end
+  end
+
+  context '#flaws' do
+    it 'should return a randomized description of flaws' do
+      expect(NPCGenerator::FLAW_OPTIONS).to include(subject.flaws)
+    end
+  end
+
+  context '#prejudice' do
+    context 'when age-group' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('age-group')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::AGE_GROUP_OPTIONS).to include(subject.prejudice)
+      end
+    end
+
+    context 'when social-class' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('social-class')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::SOCIAL_CLASS_OPTIONS).to include(subject.prejudice)
+      end
+    end
+
+    context 'when Social-deviants' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('Social-deviants')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::SOCIAL_DEVIANT_OPTIONS).to include(subject.prejudice)
+      end
+    end
+
+    context 'when profession' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('profession')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::PROFESSION_OPTIONS).to include(subject.prejudice)
+      end
+    end
+
+    context 'when race' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('race')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::RACE_OPTIONS).to include(subject.prejudice)
+      end
+    end
+
+    context 'when Other-genders' do
+      before(:each) do
+        allow(NPCGenerator::PREJUDICE_OPTIONS).to receive(:sample).and_return('Other-genders')
+      end
+
+      it 'should return an age group option' do
+        expect(NPCGenerator::PREJUDICE_OPTIONS).to include(subject.prejudice)
+      end
     end
   end
 end
