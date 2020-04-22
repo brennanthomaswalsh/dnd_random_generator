@@ -17,6 +17,14 @@ class NPCGenerator
   WHEN_CALM_TRAIT_OPTIONS = %w[Compassionate Cheerful Reserved Outspoken Uninterested Gruff Eager Deceitful Foolish Strict Agreeable Mischeivious Angry Fearful Manipulative Devout Greedy Funny Dour Fun-Loving Lazy Driven Boastful Artistic Assertive Carefree Cautious Confident Thoughtful Loyal Sophisticated Weak-Willed]
   WHEN_STRESSED_TRAIT_OPTIONS = %w[Withdrawn Murderous Obsessive Authoritarian Determined Brave Spiteful Belligerent Caustic Reckless Argumentative Gluttonous Overly Protective Angry Cowardly Meticulous Sarcastic Stubborn Destructive Practical Pushy Fanatical Secretive Scornful Courageous Impractical Calculating Industrious Manipulative Destructive Compulsive Intolerant]
   STARTING_MOOD_OPTIONS = %w[Agreeable Carefree Curious Eager Friendly Happy Hopeful Upbeat Indifferent Bored Focused Suspicious Tired Withdrawn Disagreeable Agitated Angry Despondent Gloomy Nervous]
+  FAITH_OPTIONS = %w[Quiet-true-believer Casual-observer Critical-student Outspoken-cynic Open-minded-seeker Broken-heretic Cautious-listener Fanatical-true-believer]
+  PREJUDICE_OPTIONS = %w[Other-genders age-group social-class Social-deviants profession race]
+  AGE_GROUP_OPTIONS = %w[children teenagers elderly]
+  SOCIAL_CLASS_OPTIONS = %w[ruling-class-and-authority-figures powerful-rich destitute-poor]
+  SOCIAL_DEVIANT_OPTIONS = %w[beggars drunks drug-users]
+  PROFESSION_OPTIONS = %w[farmers artists clergy soldiers fishers harlots miners merchants scholars herders sailors mages]
+  RACE_OPTIONS = %w[dwarves elves gnomes goblins half-breeds halflings humans orcs reptilians]
+  FLAW_OPTIONS = %w[Fidgets Drinks-too-much Eats-too-much Swears-often Has-poor-hygiene Can’t-resist-flirting Can’t-stop-staring Sweats-profusely-and-easily Is-a-habitual-liar Embellishes-the-truth Exaggerates-details Has-a-short-temper Is-melodramatic Gossips Chews-with-an-open-mouth Often-sniffs-audibly Believes-what-you-tell-him/her Is-skeptical-of-everything Paces Makes-poor-eye-contact]
 
   def new_npc
     {
@@ -29,8 +37,32 @@ class NPCGenerator
 
   def beliefs
     @beliefs ||= {
-
+      faith: faith,
+      prejudice: prejudice,
+      flaws: flaws
     }
+  end
+
+  def flaws
+    FLAW_OPTIONS.sample
+  end
+
+  def prejudice
+    prej = PREJUDICE_OPTIONS.sample
+    case prej
+    when 'age-group'
+      AGE_GROUP_OPTIONS.sample
+    when 'social-class'
+      SOCIAL_CLASS_OPTIONS.sample
+    when 'Social-deviants'
+      SOCIAL_DEVIANT_OPTIONS.sample
+    when 'profession'
+      PROFESSION_OPTIONS.sample
+    when 'race'
+      RACE_OPTIONS.sample
+    else
+      prej
+    end
   end
 
   def attitude
@@ -43,7 +75,7 @@ class NPCGenerator
 
   def accessories
     @accessories ||= {
-      tatto: tattoo,
+      tattoo: tattoo,
       jewelry: jewelry,
       clothes: clothes
     }
@@ -63,6 +95,10 @@ class NPCGenerator
       hands: hands,
       scar: scar
     }
+  end
+
+  def faith
+    FAITH_OPTIONS.sample
   end
 
   def starting_mood

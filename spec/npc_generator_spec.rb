@@ -131,4 +131,10 @@ RSpec.describe NPCGenerator do
       expect(NPCGenerator::STARTING_MOOD_OPTIONS).to include(subject.starting_mood)
     end
   end
+
+  context '#faith' do
+    it 'should return a randomized description of faith' do
+      expect(NPCGenerator::FAITH_OPTIONS).to include(subject.faith)
+    end
+  end
 end
