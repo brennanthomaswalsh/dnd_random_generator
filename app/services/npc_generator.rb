@@ -1,31 +1,33 @@
+# frozen_string_literal: true
+
 class NPCGenerator
-  EYE_OPTIONS = %w[Sleepy Shifty Watery Bright Cold Smiling Close-set Wild Distant Lazy Piercing Watchful Dark Hooded Eyes-of-two-different-colors Slightly-crossed Wide Beautiful Beady Penetrating]
-  EAR_OPTIONS = %w[Over-sized Long-ear-lobes Small Uneven Hairy Pointy Short-ear-lobes ears-that-stick-out Jug-handle Elaborately-pierced Cauliflower Ears-with-improbable-tufts-of-hair]
-  MOUTH_OPTIONS = %w[Full-lips Buck-teeth Thin-lips Rotting-teeth Crooked-teeth A-broken-or-missing-tooth Pursed-lips Dry-cracked-lips One-or-more-false-teeth A-mouth-that-hangs-open]
-  NOSE_OPTIONS = %w[crooked bulbous narrow button long broad angular round broken hawk-like wide delicate]
-  CHIN_OPTIONS = %w[pronounced cleft dimple-on-the-chin rounded sharp-jawline square-jaw round-jaw underbite]
-  HAIR_OPTIONS = %w[Thick Wispy Straight Wavy Curly Wiry Oily Lush Poofy Long-braids Tight-braids Very-long Greasy Unruly unusual-hairstyle outdated-hairstyle high-maintenance-hairstyle Short-cropped shaved None]
-  MISC_OPTIONS = %w[High-cheekbones Tight-drawn-cheeks Chubby-cheeks unpleasant-pustule large-mole beauty-mark Freckles Terrible-scarring]
-  HEIGHT_OPTIONS = %w[Unusually-short Short-in-stature Average-height Slightly-above-average-height Well-above-average-height Unusually-tall]
-  BODY_OPTIONS = %w[Thin-and-delicate Of-average-build Well-muscled Slightly-overweight Grotesquely-obese Lean-and-lanky Lithe-and-lean Thin-and-wiry Sinewy-and-strong Flabby-and-weak Lumpy-or-bent Thin-and-flimsy Soft-and-chubby Thin-and-petite Pudgy Big-and-broad Stocky-and-strong Bony Wide-and-ponderous Covered-in-hair]
-  HAND_OPTIONS = %w[Powerful Delicate Rough Soft A-light-touch A-heavy-touch]
-  SCAR_OPTIONS = %w[jagged dark-purple angry-red long-thin None]
-  TATTOO_OPTIONS = %w[dagger arrow anchor skull pair-of-crossed-bones snake scorpion spider-web heart ring-of-thorns mermaid dragon none]
-  JEWELRY_TYPE_OPTIONS = %w[An-earring Two-earrings small-chain-about-the-neck large-chain-about-the-neck tight-choker-about-the-neck brooch ring Several-rings bracelet nose-ring medallion ornate-belt]
-  JEWELRY_STYLE_OPTIONS = %w[Steel Bronze Pewter Silver Gold Platinum Copper Gemstone]
-  CLOTHES_OPTIONS = %w[Crisp-and-new Fashionable-and-hip bit-old-fashioned Of-the-highest-quality Faded-but-in-good-condition Faded-and-patched Torn-in-places/missing-buttons Tattered-and-worn]
-  WHEN_CALM_TRAIT_OPTIONS = %w[Compassionate Cheerful Reserved Outspoken Uninterested Gruff Eager Deceitful Foolish Strict Agreeable Mischeivious Angry Fearful Manipulative Devout Greedy Funny Dour Fun-Loving Lazy Driven Boastful Artistic Assertive Carefree Cautious Confident Thoughtful Loyal Sophisticated Weak-Willed]
-  WHEN_STRESSED_TRAIT_OPTIONS = %w[Withdrawn Murderous Obsessive Authoritarian Determined Brave Spiteful Belligerent Caustic Reckless Argumentative Gluttonous Overly Protective Angry Cowardly Meticulous Sarcastic Stubborn Destructive Practical Pushy Fanatical Secretive Scornful Courageous Impractical Calculating Industrious Manipulative Destructive Compulsive Intolerant]
-  STARTING_MOOD_OPTIONS = %w[Agreeable Carefree Curious Eager Friendly Happy Hopeful Upbeat Indifferent Bored Focused Suspicious Tired Withdrawn Disagreeable Agitated Angry Despondent Gloomy Nervous]
-  FAITH_OPTIONS = %w[Quiet-true-believer Casual-observer Critical-student Outspoken-cynic Open-minded-seeker Broken-heretic Cautious-listener Fanatical-true-believer]
-  PREJUDICE_OPTIONS = %w[Other-genders age-group social-class Social-deviants profession race]
-  AGE_GROUP_OPTIONS = %w[children teenagers elderly]
-  SOCIAL_CLASS_OPTIONS = %w[ruling-class-and-authority-figures powerful-rich destitute-poor]
-  SOCIAL_DEVIANT_OPTIONS = %w[beggars drunks drug-users]
-  PROFESSION_OPTIONS = %w[farmers artists clergy soldiers fishers harlots miners merchants scholars herders sailors mages]
-  RACE_OPTIONS = %w[dwarves elves gnomes goblins half-breeds halflings humans orcs reptilians]
-  FLAW_OPTIONS = %w[Fidgets Drinks-too-much Eats-too-much Swears-often Has-poor-hygiene Can’t-resist-flirting Can’t-stop-staring Sweats-profusely-and-easily Is-a-habitual-liar Embellishes-the-truth Exaggerates-details Has-a-short-temper Is-melodramatic Gossips Chews-with-an-open-mouth Often-sniffs-audibly Believes-what-you-tell-him/her Is-skeptical-of-everything Paces Makes-poor-eye-contact]
-  GEMSTONE_OPTIONS = %w[amethyst crystal diamond emerald jade obsidian opal pearl ruby sapphire topaz turquoise]
+  EYE_OPTIONS = %w[Sleepy Shifty Watery Bright Cold Smiling Close-set Wild Distant Lazy Piercing Watchful Dark Hooded Eyes-of-two-different-colors Slightly-crossed Wide Beautiful Beady Penetrating].freeze
+  EAR_OPTIONS = %w[Over-sized Long-ear-lobes Small Uneven Hairy Pointy Short-ear-lobes ears-that-stick-out Jug-handle Elaborately-pierced Cauliflower Ears-with-improbable-tufts-of-hair].freeze
+  MOUTH_OPTIONS = %w[Full-lips Buck-teeth Thin-lips Rotting-teeth Crooked-teeth A-broken-or-missing-tooth Pursed-lips Dry-cracked-lips One-or-more-false-teeth A-mouth-that-hangs-open].freeze
+  NOSE_OPTIONS = %w[crooked bulbous narrow button long broad angular round broken hawk-like wide delicate].freeze
+  CHIN_OPTIONS = %w[pronounced cleft dimple-on-the-chin rounded sharp-jawline square-jaw round-jaw underbite].freeze
+  HAIR_OPTIONS = %w[Thick Wispy Straight Wavy Curly Wiry Oily Lush Poofy Long-braids Tight-braids Very-long Greasy Unruly unusual-hairstyle outdated-hairstyle high-maintenance-hairstyle Short-cropped shaved None].freeze
+  MISC_OPTIONS = %w[High-cheekbones Tight-drawn-cheeks Chubby-cheeks unpleasant-pustule large-mole beauty-mark Freckles Terrible-scarring].freeze
+  HEIGHT_OPTIONS = %w[Unusually-short Short-in-stature Average-height Slightly-above-average-height Well-above-average-height Unusually-tall].freeze
+  BODY_OPTIONS = %w[Thin-and-delicate Of-average-build Well-muscled Slightly-overweight Grotesquely-obese Lean-and-lanky Lithe-and-lean Thin-and-wiry Sinewy-and-strong Flabby-and-weak Lumpy-or-bent Thin-and-flimsy Soft-and-chubby Thin-and-petite Pudgy Big-and-broad Stocky-and-strong Bony Wide-and-ponderous Covered-in-hair].freeze
+  HAND_OPTIONS = %w[Powerful Delicate Rough Soft A-light-touch A-heavy-touch].freeze
+  SCAR_OPTIONS = %w[jagged dark-purple angry-red long-thin None].freeze
+  TATTOO_OPTIONS = %w[dagger arrow anchor skull pair-of-crossed-bones snake scorpion spider-web heart ring-of-thorns mermaid dragon none].freeze
+  JEWELRY_TYPE_OPTIONS = %w[An-earring Two-earrings small-chain-about-the-neck large-chain-about-the-neck tight-choker-about-the-neck brooch ring Several-rings bracelet nose-ring medallion ornate-belt].freeze
+  JEWELRY_STYLE_OPTIONS = %w[Steel Bronze Pewter Silver Gold Platinum Copper Gemstone].freeze
+  CLOTHES_OPTIONS = %w[Crisp-and-new Fashionable-and-hip bit-old-fashioned Of-the-highest-quality Faded-but-in-good-condition Faded-and-patched Torn-in-places/missing-buttons Tattered-and-worn].freeze
+  WHEN_CALM_TRAIT_OPTIONS = %w[Compassionate Cheerful Reserved Outspoken Uninterested Gruff Eager Deceitful Foolish Strict Agreeable Mischeivious Angry Fearful Manipulative Devout Greedy Funny Dour Fun-Loving Lazy Driven Boastful Artistic Assertive Carefree Cautious Confident Thoughtful Loyal Sophisticated Weak-Willed].freeze
+  WHEN_STRESSED_TRAIT_OPTIONS = %w[Withdrawn Murderous Obsessive Authoritarian Determined Brave Spiteful Belligerent Caustic Reckless Argumentative Gluttonous Overly Protective Angry Cowardly Meticulous Sarcastic Stubborn Destructive Practical Pushy Fanatical Secretive Scornful Courageous Impractical Calculating Industrious Manipulative Destructive Compulsive Intolerant].freeze
+  STARTING_MOOD_OPTIONS = %w[Agreeable Carefree Curious Eager Friendly Happy Hopeful Upbeat Indifferent Bored Focused Suspicious Tired Withdrawn Disagreeable Agitated Angry Despondent Gloomy Nervous].freeze
+  FAITH_OPTIONS = %w[Quiet-true-believer Casual-observer Critical-student Outspoken-cynic Open-minded-seeker Broken-heretic Cautious-listener Fanatical-true-believer].freeze
+  PREJUDICE_OPTIONS = %w[Other-genders age-group social-class Social-deviants profession race].freeze
+  AGE_GROUP_OPTIONS = %w[children teenagers elderly].freeze
+  SOCIAL_CLASS_OPTIONS = %w[ruling-class-and-authority-figures powerful-rich destitute-poor].freeze
+  SOCIAL_DEVIANT_OPTIONS = %w[beggars drunks drug-users].freeze
+  PROFESSION_OPTIONS = %w[farmers artists clergy soldiers fishers harlots miners merchants scholars herders sailors mages].freeze
+  RACE_OPTIONS = %w[dwarves elves gnomes goblins half-breeds halflings humans orcs reptilians].freeze
+  FLAW_OPTIONS = %w[Fidgets Drinks-too-much Eats-too-much Swears-often Has-poor-hygiene Can’t-resist-flirting Can’t-stop-staring Sweats-profusely-and-easily Is-a-habitual-liar Embellishes-the-truth Exaggerates-details Has-a-short-temper Is-melodramatic Gossips Chews-with-an-open-mouth Often-sniffs-audibly Believes-what-you-tell-him/her Is-skeptical-of-everything Paces Makes-poor-eye-contact].freeze
+  GEMSTONE_OPTIONS = %w[amethyst crystal diamond emerald jade obsidian opal pearl ruby sapphire topaz turquoise].freeze
 
   def new_npc
     {
